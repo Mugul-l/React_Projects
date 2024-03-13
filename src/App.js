@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 
 function App() {
+
+  const[text, setText]= useState("");
+
+  let caseHandler=(e)=>{
+    setText(e.target.value)
+  }
+  let convertUpperCase=()=>{
+    setText(text.toUpperCase())
+  }
+
+  let remove=()=>{
+    setText(" ")
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <center>
+    <div>
+      <textarea type="text" value={text} onChange={caseHandler} ></textarea>
+      <button onClick={convertUpperCase}>convert to uppercase &rarr;</button>
+      <button onClick={remove}>Clear</button>
     </div>
+    </center>
+    </>
   );
 }
 
